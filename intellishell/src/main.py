@@ -1,4 +1,9 @@
-
+/* MIT License
+#
+# Copyright (c) 2020 Emir Ensar All Rights Reserved.
+# Distributed under the terms of the MIT License.
+#
+# */
 #   eeeeeeeeeeee    nnnn  nnnnnnnn        ssssssssss     aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   
 #  ee::::::::::::ee  n:::nn::::::::nn    ss::::::::::s    a::::::::::::a r::::rrr:::::::::r  
 # e::::::eeeee:::::een::::::::::::::nn ss:::::::::::::s   aaaaaaaaa:::::ar:::::::::::::::::r 
