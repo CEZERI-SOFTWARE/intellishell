@@ -133,7 +133,7 @@ _)      \.___.,|     .'
 """)
       print("Kernel: " + bcolors.OKGREEN)
       
-      print("Linux 😎 " + bcolors.ENDC)
+      print("Linux" + bcolors.ENDC)
       print("Kernel Release: ")
       print(bcolors.OKGREEN + platform.release() + bcolors.ENDC)
       print("Distribution: " + bcolors.OKGREEN)
