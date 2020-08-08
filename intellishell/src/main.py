@@ -1,8 +1,13 @@
-
-#   eeeeeeeeeeee     nnnn  nnnnnnnn        ssssssssss     aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   
+# /* MIT License
+#
+# Copyright (c) 2020 Emir Ensar All Rights Reserved.
+# Distributed under the terms of the MIT License.
+#
+# */
+#   eeeeeeeeeeee    nnnn  nnnnnnnn        ssssssssss     aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   
 #  ee::::::::::::ee  n:::nn::::::::nn    ss::::::::::s    a::::::::::::a r::::rrr:::::::::r  
-# e::::::eeeee:::::ee n::::::::::::::nn ss:::::::::::::s   aaaaaaaaa:::::ar:::::::::::::::::r 
-#e::::::e     e:::::e nn:::::::::::::::n s::::::ssss:::::s           a::::arr::::::rrrrr::::::r
+# e::::::eeeee:::::een::::::::::::::nn ss:::::::::::::s   aaaaaaaaa:::::ar:::::::::::::::::r 
+#e::::::e     e:::::enn:::::::::::::::n s::::::ssss:::::s           a::::arr::::::rrrrr::::::r
 #e:::::::eeeee::::::e  n:::::nnnn:::::n s:::::s  ssssss     aaaaaaa:::::a r:::::r     r:::::r
 #e:::::::::::::::::e   n::::n    n::::n   s::::::s        aa::::::::::::a r:::::r     rrrrrrr
 #e::::::eeeeeeeeeee    n::::n    n::::n      s::::::s    a::::aaaa::::::a r:::::r            
@@ -22,24 +27,23 @@ import sys
 import sysconfig
 import random
 import platform
-import subprocess
-from intellifetch.py import * 
 import cmd
 import ssl
 import datetime
 import time
+from intellifetch import fetch
+from intellifetch import fetch_os
 hostname = socket.gethostname()
 username = getpass.getuser()
+
 suankizaman = datetime.datetime.now()
-distribution = "lsb_release -ds"
-context = ssl.create_default_context()
-class bcolors:
+class colors:
     HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
-    ENDC = '\033[0m'
+    END = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
@@ -51,8 +55,8 @@ print("""
   | || ' \  _/ -_) | | (_-< ' \/ -_) | |
  |___|_||_\__\___|_|_|_/__/_||_\___|_|_|                                           
 """)
-print(bcolors.OKGREEN + 'Welcome to Intellishell, ' + username + "!" + bcolors.ENDC)
-print(bcolors.WARNING + "Write 'help' to see commands." + bcolors.ENDC)
+print(colors.GREEN + 'Welcome to Intellishell, ' + username + "!" + colors.END)
+print(colors.WARNING + "Write 'help' to see commands." + colors.END)
 
 
 print("Current date & time:")
@@ -62,9 +66,16 @@ print (suankizaman.strftime("%a, %b %d, %Y"))
 
 
 #Start
+def cmdline(command):
+    process = Popen(
+        args=command,
+        stdout=PIPE,
+        shell=True
+    )
+    return process.communicate()[0]
 def main_function():
     while True:
-        cmd = input(bcolors.OKBLUE + username + bcolors.ENDC + bcolors.OKGREEN  + "@" + bcolors.OKBLUE + hostname + bcolors.ENDC + ": ")
+        cmd = input(colors.BLUE + username + colors.END + colors.GREEN  + "@" + colors.BLUE + hostname + colors.END + ": ")
         
           
         if cmd == "exit":
@@ -74,11 +85,10 @@ def main_function():
           print("Made by Emir Ensar Rahmanlar (github.com/rahmanlar)")
           print("Copyright (c) 2020 Cezeri Software, licensed with MIT.")
         elif cmd == "intellifetch":
-          intellifetch.fetch()
-          intellifetch.fetch_os()
-          intellifetch.fetch_etc()
+          fetch()
+          fetch_os()
         elif cmd == "termcmd":
-          termcmd = input(bcolors.OKBLUE + username + bcolors.OKGREEN + "@" + bcolors.ENDC + bcolors.OKBLUE + hostname + bcolors.ENDC + "(terminal mode)" + ":")
+          termcmd = input(colors.BLUE + username + colors.GREEN + "@" + colors.END + colors.BLUE + hostname + colors.END + "(terminal mode)" + ":")
           os.system(termcmd)
         elif cmd == "print":
           prinput = input("print ")
@@ -86,12 +96,10 @@ def main_function():
         elif cmd == "diskusage":
           print(psutil.disk_usage('/'))
         elif cmd == "help":
-          print("""
-credits - See who's making this app.
-intellifetch - A simple screenfetch.
-termcmd - To type terminal or cmd commands only.
-print - A simple print function.
-          """)
+          print(colors.GREEN + "credits " + colors.END + "- See who's making this app.")
+          print(colors.GREEN + "intellifetch " + colors.END + "- A simple screenfetch.")
+          print(colors.GREEN + "termcmd " + colors.END + "- To type terminal or cmd commands only.")
+          print(colors.GREEN + "print " + colors.END + "- A simple print function.")
         else:
             terminalcommand = os.system(cmd)
             
