@@ -1,13 +1,8 @@
-# /* MIT License
-#
-# Copyright (c) 2020 Emir Ensar All Rights Reserved.
-# Distributed under the terms of the MIT License.
-#
-# */
-#   eeeeeeeeeeee    nnnn  nnnnnnnn        ssssssssss     aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   
+
+#   eeeeeeeeeeee     nnnn  nnnnnnnn        ssssssssss     aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   
 #  ee::::::::::::ee  n:::nn::::::::nn    ss::::::::::s    a::::::::::::a r::::rrr:::::::::r  
-# e::::::eeeee:::::een::::::::::::::nn ss:::::::::::::s   aaaaaaaaa:::::ar:::::::::::::::::r 
-#e::::::e     e:::::enn:::::::::::::::n s::::::ssss:::::s           a::::arr::::::rrrrr::::::r
+# e::::::eeeee:::::ee n::::::::::::::nn ss:::::::::::::s   aaaaaaaaa:::::ar:::::::::::::::::r 
+#e::::::e     e:::::e nn:::::::::::::::n s::::::ssss:::::s           a::::arr::::::rrrrr::::::r
 #e:::::::eeeee::::::e  n:::::nnnn:::::n s:::::s  ssssss     aaaaaaa:::::a r:::::r     r:::::r
 #e:::::::::::::::::e   n::::n    n::::n   s::::::s        aa::::::::::::a r:::::r     rrrrrrr
 #e::::::eeeeeeeeeee    n::::n    n::::n      s::::::s    a::::aaaa::::::a r:::::r            
@@ -27,6 +22,8 @@ import sys
 import sysconfig
 import random
 import platform
+import subprocess
+from intellifetch.py import * 
 import cmd
 import ssl
 import datetime
@@ -65,84 +62,6 @@ print (suankizaman.strftime("%a, %b %d, %Y"))
 
 
 #Start
-def fetch():
-    print(bcolors.OKGREEN + username + bcolors.ENDC + "'s computer")
-    print("Name: " + bcolors.OKGREEN  + hostname + bcolors.ENDC) 
-def fetch_os():
-    if platform.system() == "Darwin":
-     print("""
-                      .888
-                    .8888'
-                   .8888'
-                   888'
-                   8'
-      .88888888888. .88888888888.
-   .8888888888888888888888888888888.
- .8888888888888888888888888888888888.
-.&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
-&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
-&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
- 00000000000000000000000000000000000
-  000000000000000000000000000000000
-   0000000000000000000000000000000
-     ###########################
-     #######################
-         #################
-      
-""")
-     print("Kernel Name: Darwin")
-     print("OS name: MacOS")
-    elif platform.system() == "Windows":
-      print("""
-             _.-;;-._
-      '-..-'|   ||   |
-      '-..-'|_.-;;-._|
-      '-..-'|   ||   |
-      '-..-'|_.-''-._|
-""")
-      print("Kernel Name: ")
-      print("NT")
-      print("OS Name: ")
-      print("Windows")
-      print("Release:")
-      print(platform.release())
-    elif platform.system() == "Linux":
-      print("""
-        dGGGGMMb
-       @p~qp~~qMb
-       M|@||@) M|
-       @,----.JM|
-      JS^\__/  qKL
-     dZP        qKRb
-    dZP          qKKb
-   fZP            SMMb
-   HZM            MMMM
-   FqM            MMMM
- __| ".        |\dS"qML
- |    `.       | `' \Zq
-_)      \.___.,|     .'
-\____   )MMMMMP|   .'
-     `-'       `--' 
-
-""")
-      print("Kernel: " + bcolors.OKGREEN)
-      
-      print("Linux" + bcolors.ENDC)
-      print("Kernel Release: ")
-      print(bcolors.OKGREEN + platform.release() + bcolors.ENDC)
-      print("Distribution: " + bcolors.OKGREEN)
-      os.system(distribution)
-
-      
-def fetch_etc():
-  print(bcolors.ENDC + "Platform:")
-  print(bcolors.OKGREEN + sysconfig.get_platform() + bcolors.ENDC)
 def main_function():
     while True:
         cmd = input(bcolors.OKBLUE + username + bcolors.ENDC + bcolors.OKGREEN  + "@" + bcolors.OKBLUE + hostname + bcolors.ENDC + ": ")
@@ -155,9 +74,9 @@ def main_function():
           print("Made by Emir Ensar Rahmanlar (github.com/rahmanlar)")
           print("Copyright (c) 2020 Cezeri Software, licensed with MIT.")
         elif cmd == "intellifetch":
-          fetch()
-          fetch_os()
-          fetch_etc()
+          intellifetch.fetch()
+          intellifetch.fetch_os()
+          intellifetch.fetch_etc()
         elif cmd == "termcmd":
           termcmd = input(bcolors.OKBLUE + username + bcolors.OKGREEN + "@" + bcolors.ENDC + bcolors.OKBLUE + hostname + bcolors.ENDC + "(terminal mode)" + ":")
           os.system(termcmd)
